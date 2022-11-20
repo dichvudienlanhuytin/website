@@ -1,0 +1,95 @@
+service: dienlanh
+
+plugins:
+  - ./deploy/plugins/serverless-spa-cloudfront
+
+custom:
+  s3Bucket: web.dienlanh.${self:provider.region}
+  distDir: dist
+
+package:
+  exclude:
+    - 'node_modules/**'
+
+provider:
+  name: aws
+  stage: ${opt:stage, 'dev'}
+  deploymentBucket: deployments.${self:provider.region}
+  profile: huy
+  region: ap-northeast-1
+  runtime: nodejs14.x
+
+resources:
+  Resources:
+    OriginAccessIdentity:
+      Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+      Properties:
+        CloudFrontOriginAccessIdentityConfig:
+          Comment: 'dien lanh tam duc website'
+    WebAppS3Bucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:custom.s3Bucket}
+        AccessControl: PublicRead
+        WebsiteConfiguration:
+          IndexDocument: index.html
+          ErrorDocument: index.html
+    WebAppS3BucketPolicy:
+      Type: AWS::S3::BucketPolicy
+      Properties:
+        Bucket:
+          Ref: WebAppS3Bucket
+        PolicyDocument:
+          Statement:
+            - Sid: PublicReadGetObject
+              Effect: Allow
+              Action:
+                - s3:GetObject
+              Resource: arn:aws:s3:::${self:custom.s3Bucket}/*
+              Principal:
+                CanonicalUser: !GetAtt OriginAccessIdentity.S3CanonicalUserId
+    WebAppCloudFrontDistribution:
+      Type: AWS::CloudFront::Distribution
+      Properties:
+        DistributionConfig:
+          IPV6Enabled: 'false'
+          PriceClass: 'PriceClass_200'
+          Origins:
+            - DomainName: ${self:custom.s3Bucket}.s3.amazonaws.com
+              Id: WebApp
+              S3OriginConfig:
+                OriginAccessIdentity:
+                  !Join [
+                    '',
+                    [
+                      'origin-access-identity/cloudfront/',
+                      !Ref OriginAccessIdentity,
+                    ],
+                  ]
+          Enabled: 'true'
+          DefaultRootObject: index.html
+          CustomErrorResponses:
+            - ErrorCode: 404
+              ResponseCode: 200
+              ResponsePagePath: /index.html
+          DefaultCacheBehavior:
+            AllowedMethods:
+              - DELETE
+              - GET
+              - HEAD
+              - OPTIONS
+              - PATCH
+              - POST
+              - PUT
+            TargetOriginId: WebApp
+            ForwardedValues:
+              QueryString: 'false'
+              Cookies:
+                Forward: none
+            ViewerProtocolPolicy: redirect-to-https
+          ViewerCertificate:
+            CloudFrontDefaultCertificate: 'true'
+  Outputs:
+    WebAppCloudFrontDistributionOutput:
+      Value:
+        'Fn::GetAtt': [WebAppCloudFrontDistribution, DomainName]

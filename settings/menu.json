@@ -1,0 +1,36 @@
+{
+  "menu": [
+    {
+      "name": "Trang Chủ",
+      "link": "/"
+    },
+    {
+      "name": "Giới Thiệu",
+      "link": "/about/"
+    },
+    {
+      "name": "Tin Tức",
+      "link": "/new/"
+    },
+    {
+      "name": "Sản Phẩm",
+      "link": "/product/"
+    },
+    {
+      "name": "Tư Vấn Sử Dụng",
+      "link": "/support/"
+    },
+    {
+      "name": "Dịch Vụ",
+      "id": "service"
+    },
+    {
+      "name": "Chính Sách",
+      "link": "/rule/"
+    },
+    {
+      "name": "Liên Hệ",
+      "link": "/contact/"
+    }
+  ]
+}
