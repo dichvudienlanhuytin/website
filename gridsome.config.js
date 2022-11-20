@@ -1,55 +1,55 @@
 module.exports = {
   siteName: "Điện Lạnh",
-  siteUrl: 'https://tbn133.github.io',
-  pathPrefix: '/dienlanh',
+  siteUrl: "http://dichvudienlanhuytin.com",
+  pathPrefix: "/",
   plugins: [
     {
       use: "gridsome-source-static-meta",
       options: {
-        path: "settings/*.json"
-      }
+        path: "settings/*.json",
+      },
     },
     {
       use: "@gridsome/source-filesystem",
       options: {
         typeName: "Product",
-        path: "./content/products/*.json"
-      }
+        path: "./content/products/*.json",
+      },
     },
     {
-      use: '@gridsome/source-filesystem',
+      use: "@gridsome/source-filesystem",
       options: {
-        typeName: 'Service',
-        path: './content/services/*.json'
-      }
+        typeName: "Service",
+        path: "./content/services/*.json",
+      },
     },
     {
-      use: '@gridsome/source-filesystem',
+      use: "@gridsome/source-filesystem",
       options: {
-        typeName: 'Rule',
-        path: './content/rules/*.json'
-      }
+        typeName: "Rule",
+        path: "./content/rules/*.json",
+      },
     },
     {
-      use: '@gridsome/source-filesystem',
+      use: "@gridsome/source-filesystem",
       options: {
-        typeName: 'New',
-        path: './content/news/*.json'
-      }
-    }
+        typeName: "New",
+        path: "./content/news/*.json",
+      },
+    },
   ],
   templates: {
     Product: "/product/:name",
     Rule: "/rule/:name",
     New: "/new/:name",
-    Service: "/service/:name"
+    Service: "/service/:name",
   },
   css: {
     loaderOptions: {
-      scss: {}
-    }
+      scss: {},
+    },
   },
-  chainWebpack: config => {
-    config.resolve.alias.set('@images', '@/assets/images')
-  }
+  chainWebpack: (config) => {
+    config.resolve.alias.set("@images", "@/assets/images")
+  },
 }
