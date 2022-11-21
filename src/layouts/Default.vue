@@ -2,7 +2,6 @@
   <div class="layout">
     <Header />
     <Banner />
-    <slot name="carousel"></slot>
     <div class="bdtcd">
       <div class="container">
         <ul class="no-ul">
@@ -28,8 +27,8 @@
             >
               <g-image
                 class="img-responsive"
-                title="yahoo"
-                src="../assets/images/yahoo.png"
+                title="support1"
+                :src="require(`!!assets-loader!@images/support.png`)"
               />
               <span>Kinh doanh</span>
               <div class="text-center">
@@ -42,8 +41,8 @@
             >
               <g-image
                 class="img-responsive"
-                title=""
-                src="../assets/images/support-skype1.jpg"
+                title="support2"
+                :src="require(`!!assets-loader!@images/support.png`)"
               />
               <span>Kỹ thuật</span>
               <div class="text-center">

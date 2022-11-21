@@ -19,7 +19,7 @@
                 </td>
                 <td class="text-right d-block d-lg-none">
                   <b-button type="button" class="btn btn-primary btn-lg">
-                    <i class="fas fa-bars"></i>
+                    <b-icon icon="list"></b-icon>
                   </b-button>
                   <div></div>
                 </td>
@@ -29,7 +29,9 @@
         </div>
         <div class="col-lg-6 text-center d-none d-lg-block">
           <div style="margin-bottom: 19px"></div>
-          <div class="sm-ti" style="font-size: 14px;padding-bottom: 13px;;">{{ $static.metadata.company.name }}</div>
+          <div class="sm-ti" style="font-size: 14px; padding-bottom: 13px">
+            {{ $static.metadata.company.name }}
+          </div>
           <div class="sm-ti" style="font-size: 25px; color: #e5cb50">
             {{ $static.metadata.company.description }}
           </div>
@@ -39,19 +41,17 @@
             :href="'tel:' + $static.metadata.company.telephone1"
             class="hot-contact hot-bord"
           >
-            <i class="fas fa-phone"></i>
+            <b-icon icon="telephone"></b-icon>
             {{ $static.metadata.company.telephone1 }}
           </b-link>
           <b-link
             :href="'tel:' + $static.metadata.company.telephone2"
             class="hot-contact hot-bord"
           >
-            <i class="fas fa-phone"></i>
+            <b-icon icon="telephone"></b-icon>
             {{ $static.metadata.company.telephone2 }}
           </b-link>
-          <b-button type="button" v-b-modal.modal-1>
-            Đặt Lịch Sửa Chữa
-          </b-button>
+          <b-button type="button" v-b-modal.modal-1>Đặt Lịch Sửa Chữa</b-button>
         </div>
       </div>
       <b-modal id="modal-1" title="ĐẶT LỊCH SỬA CHỮA" hide-footer>
@@ -143,8 +143,20 @@
             </b-row>
           </b-form-group>
           <b-form-group v-slot="{ ariaDescribedby }" align="right">
-              <b-button type="submit" :aria-describedby="ariaDescribedby" variant="primary">Đặt lịch ngay</b-button>
-              <b-button type="reset" :aria-describedby="ariaDescribedby" variant="danger">Reset</b-button>
+            <b-button
+              type="submit"
+              :aria-describedby="ariaDescribedby"
+              variant="primary"
+            >
+              Đặt lịch ngay
+            </b-button>
+            <b-button
+              type="reset"
+              :aria-describedby="ariaDescribedby"
+              variant="danger"
+            >
+              Reset
+            </b-button>
           </b-form-group>
         </b-form>
       </b-modal>
@@ -179,23 +191,23 @@ export default {
         selectedTime: "",
       },
       show: true,
-    };
+    }
   },
   methods: {
     onSubmit(event) {
-      event.preventDefault();
-      alert(JSON.stringify(this.form));
+      event.preventDefault()
+      alert(JSON.stringify(this.form))
     },
     onReset(event) {
-      event.preventDefault();
+      event.preventDefault()
       // Reset our form values
-      Object.keys(this.form).forEach(key => this.form[key] = '')
+      Object.keys(this.form).forEach((key) => (this.form[key] = ""))
       // Trick to reset/clear native browser form validation state
-      this.show = false;
+      this.show = false
       this.$nextTick(() => {
-        this.show = true;
-      });
+        this.show = true
+      })
     },
   },
-};
+}
 </script>
