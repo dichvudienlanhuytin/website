@@ -14,7 +14,12 @@
                   <b>{{ $static.metadata.company.address }}</b>
                 </li>
                 <li>
-                  Website: <b><a href="/">dienlanhtamduc.com</a></b>
+                  Website:
+                  <b>
+                    <b-link :href="$static.metadata.company.website">
+                      {{ $static.metadata.company.website }}
+                    </b-link>
+                  </b>
                 </li>
               </ul>
               <div class="news-detail form-group">
@@ -24,14 +29,14 @@
                 :href="'tel:' + $static.metadata.company.telephone1"
                 class="hot-contact hot-bord"
               >
-                <i class="fas fa-phone"></i>
+                <b-icon icon="telephone"></b-icon>
                 {{ $static.metadata.company.telephone1 }}
               </b-link>
               <b-link
                 :href="'tel:' + $static.metadata.company.telephone2"
                 class="hot-contact hot-bord"
               >
-                <i class="fas fa-phone"></i>
+                <b-icon icon="telephone"></b-icon>
                 {{ $static.metadata.company.telephone2 }}
               </b-link>
             </div>
@@ -60,9 +65,14 @@
             <div class="footer-col">
               <div class="title-footer h3">CHI NHÁNH</div>
               <div class="row">
-                <div class="col-md-12" v-for="(b, index) in $static.metadata.company.branch" :key="index">
+                <div
+                  class="col-md-12"
+                  v-for="(b, index) in $static.metadata.company.branch"
+                  :key="index"
+                >
                   <div class="diachi">
-                    <strong>Chi nhánh {{index + 1}}:</strong> {{b}}
+                    <strong>Chi nhánh {{ index + 1 }}:</strong>
+                    {{ b }}
                   </div>
                 </div>
               </div>
@@ -71,7 +81,8 @@
         </div>
 
         <div class="below-footer">
-          Copyright © 2018 <span>{{$static.metadata.company.name}}</span>
+          Copyright © 2018
+          <span>{{ $static.metadata.company.name }}</span>
         </div>
       </div>
 
@@ -79,12 +90,13 @@
         <ul>
           <li>
             <a href="/" rel="nofollow" target="_blank">
-              <b-icon icon="icon-home-w"></b-icon>Home
+              <b-icon icon="icon-home-w"></b-icon>
+              Home
             </a>
           </li>
           <li>
             <g-link to="/contact" class="chat_animation">
-              <b-icon icon="ticon-chat-sms" title="Chát trực tiếp"/>
+              <b-icon icon="ticon-chat-sms" title="Chát trực tiếp" />
               Liên hệ
             </g-link>
           </li>
@@ -93,7 +105,7 @@
       <b-button
         type="button"
         class="btn-uptop"
-        @click="scrollTop(0,0)"
+        @click="scrollTop(0, 0)"
         style="display: inline-block"
       >
         <b-icon icon="arrow-up" />
@@ -108,6 +120,7 @@
         name
         telephone1
         telephone2
+        website
         fax
         address
         description
@@ -139,8 +152,8 @@ export default {
   methods: {
     scrollTop() {
       scroll(0, 0)
-    }
-  }
+    },
+  },
 }
 </script>
 

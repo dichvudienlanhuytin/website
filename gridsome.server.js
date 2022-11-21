@@ -8,17 +8,17 @@
 module.exports = function (api) {
   api.loadSource(({ addCollection }) => {
     // Use the Data Store API here: https://gridsome.org/docs/data-store-api/
-    
   })
 
   api.createPages(({ createPage }) => {
     // Use the Pages API here: https://gridsome.org/docs/pages-api/
   })
 
-  api.loadSource(async store => {
-    store.addMetadata('company', {
+  api.loadSource(async (store) => {
+    store.addMetadata("company", {
       short_name: "ĐIỆN LẠNH TÂM ĐỨC",
       name: "CÔNG TY TNHH THƯƠNG MẠI DỊCH VỤ CƠ ĐIỆN LẠNH TÂM ĐỨC",
+      website: "https://dichvudienlanhuytin.com",
       telephone1: "0901646488",
       telephone2: "0976763713",
       email: "dienlanhtamduc@gmail.com",
@@ -26,9 +26,7 @@ module.exports = function (api) {
       address: "92/10/6 Lâm Thị Hố, P.Tân Chánh Hiệp, Q.12, TPHCM, VN",
       tax: "0317109937",
       description: "CHỮ TÍN - NIỀM TIN - TRÁCH NHIỆM",
-      branch: [
-        '92/10/6 Lâm Thị Hố, P.Tân Chánh Hiệp, Q.12, TPHCM, VN'
-      ]
+      branch: ["92/10/6 Lâm Thị Hố, P.Tân Chánh Hiệp, Q.12, TPHCM, VN"],
     })
   })
 }

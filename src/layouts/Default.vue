@@ -22,24 +22,34 @@
             <a href="javascript:void(0)">Hỗ trợ khách hàng</a>
           </div>
           <div class="border">
-            <a class="lihotro" href="tel:02866864560">
-              <img
+            <b-link
+              class="lihotro"
+              :href="'tel:' + $static.metadata.company.telephone1"
+            >
+              <g-image
                 class="img-responsive"
                 title="yahoo"
                 src="../assets/images/yahoo.png"
               />
               <span>Kinh doanh</span>
-              <div class="text-center">(028) 6686 4560</div></a
+              <div class="text-center">
+                {{ $static.metadata.company.telephone1 }}
+              </div>
+            </b-link>
+            <b-link
+              class="lihotro"
+              :href="'tel:' + $static.metadata.company.telephone2"
             >
-            <a class="lihotro" href="tel:0902641881">
-              <img
+              <g-image
                 class="img-responsive"
                 title=""
                 src="../assets/images/support-skype1.jpg"
               />
               <span>Kỹ thuật</span>
-              <div class="text-center">090 264 1881</div>
-            </a>
+              <div class="text-center">
+                {{ $static.metadata.company.telephone2 }}
+              </div>
+            </b-link>
           </div>
           <div class="form-group"></div>
           <div class="h3 h3-ttnews">
@@ -65,7 +75,9 @@
               <div class="col-md-4 new-pdd-r">
                 <g-link :to="edge.node.path">
                   <g-image
-                    :src="require(`!!assets-loader!@images/${edge.node.image}.png`)"
+                    :src="
+                      require(`!!assets-loader!@images/${edge.node.image}.png`)
+                    "
                     :alt="edge.node.title"
                     :title="edge.node.title"
                     class="img-fluid"
@@ -89,6 +101,12 @@
 </template>
 <static-query>
   query {
+    metadata {
+      company {
+        telephone1
+        telephone2
+      }
+    }
     news: allNew {
       edges {
         node {
@@ -104,9 +122,9 @@
 </static-query>
 
 <script>
-import Header from "~/layouts/partials/Header.vue";
-import Footer from "~/layouts/partials/Footer.vue";
-import Banner from "~/layouts/partials/Banner";
+import Header from "~/layouts/partials/Header.vue"
+import Footer from "~/layouts/partials/Footer.vue"
+import Banner from "~/layouts/partials/Banner"
 
 export default {
   components: {
@@ -114,7 +132,7 @@ export default {
     Footer,
     Banner,
   },
-};
+}
 </script>
 
 <style lang="scss">

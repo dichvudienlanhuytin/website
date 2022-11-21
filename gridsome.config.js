@@ -1,6 +1,6 @@
 module.exports = {
   siteName: "Điện Lạnh",
-  siteUrl: "http://dichvudienlanhuytin.com",
+  siteUrl: "https://dichvudienlanhuytin.com",
   pathPrefix: "/",
   plugins: [
     {
