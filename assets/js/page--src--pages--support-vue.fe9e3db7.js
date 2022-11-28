@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[11],{Qv6u:function(t,e,n){"use strict";n.r(e);var r={metaInfo:{title:"Hỗ Trợ"}},s=n("KHd+"),l=Object(s.a)(r,(function(){var t=this.$createElement,e=this._self._c||t;return e("Layout",[e("div",{staticClass:"col-md-9 order-1 order-md-2"},[e("h1",[this._v("Hỗ Trợ")])])])}),[],!1,null,null,null);e.default=l.exports}}]);
